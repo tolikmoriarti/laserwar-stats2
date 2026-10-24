@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LASERWAR Stats</title>
+    <style>
+        body { font-family: sans-serif; padding: 16px; background-color: #1a1a1a; color: #fff; }
+        h2 { text-align: center; color: #ff4444; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; font-size: 14px; }
+        th, td { border: 1px solid #444; padding: 8px; text-align: center; }
+        th { background-color: #333; }
+        .red { color: #ff5555; font-weight: bold; }
+        .blue { color: #5555ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>СТАТИСТИКА РАУНДА</h2>
+    <div id="stats">Загрузка данных...</div>
+    <script>
+        // Пока это демо-данные. Позже здесь будет запрос к вашему ПК
+        const demo = {
+            players: [
+                {name: "PUTIN", team: "red", frags: 10, deaths: 2, hits: 45, shots: 120},
+                {name: "SAM", team: "blue", frags: 8, deaths: 3, hits: 38, shots: 110},
+                {name: "IVAN", team: "red", frags: 12, deaths: 5, hits: 60, shots: 150},
+                {name: "OLEG", team: "blue", frags: 5, deaths: 8, hits: 20, shots: 90}
+            ]
+        };
+        
+        let html = '<table><tr><th>Игрок</th><th>Команда</th><th>Фраги</th><th>Смерти</th><th>Попадания</th><th>Выстрелы</th></tr>';
+        
+        demo.players.forEach(p => {
+            const teamClass = p.team === 'red' ? 'red' : 'blue';
+            const teamName = p.team === 'red' ? 'Красные' : 'Синие';
+            html += `<tr>
+                <td>${p.name}</td>
+                <td class="${teamClass}">${teamName}</td>
+                <td>${p.frags}</td>
+                <td>${p.deaths}</td>
+                <td>${p.hits}</td>
+                <td>${p.shots}</td>
+            </tr>`;
+        });
+        html += '</table>';
+        document.getElementById('stats').innerHTML = html;
+    </script>
+</body>
+</html>
